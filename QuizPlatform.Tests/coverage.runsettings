@@ -1,0 +1,22 @@
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+          <Exclude>
+            [*]QuizPlatform.Api.Migrations.*
+            [*]Microsoft.AspNetCore.OpenApi.*
+            [*]System.Runtime.CompilerServices.*
+          </Exclude>
+
+          <ExcludeByFile>
+            **/Migrations/*
+            **/*Designer.cs
+            **/*Generated.cs
+          </ExcludeByFile>
+
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

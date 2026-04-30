@@ -1,0 +1,49 @@
+## Ігноруємо скомпільовані файли та збірки
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.appx
+*.msix
+*.nupkg
+*.snk
+
+## Ігноруємо файли конфігурації локальних IDE та редакторів
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+
+## Ігноруємо кеш та тимчасові файли
+*.cache
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+
+## Ігноруємо файли локальних налаштувань (щоб не злити паролі від БД, якщо вони там є)
+appsettings.Development.json
+appsettings.Local.json
+
+## Ігноруємо результати тестів та покриття коду (Coverlet тощо)
+TestResults/
+coverage/
+*.coverage
+*.trx
+
+## Ігноруємо специфічні файли ОС
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+## Docker (ігноруємо локальні волюми, якщо вони будуть створені в папці проєкту)
+.docker/
+pgdata/
+
+## k6 (якщо колись додаси генерацію HTML-звітів локально)
+k6/summary.html
+k6/*.json
