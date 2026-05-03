@@ -18,7 +18,7 @@ export default function () {
     
     check(res, {
         'status is 200': (r) => r.status === 200,
-        'returns array': (r) => r.body.includes('['), // Перевіряємо, що повернувся масив
+        'returns array': (r) => r.body.includes('['),
     });
     
     sleep(1);

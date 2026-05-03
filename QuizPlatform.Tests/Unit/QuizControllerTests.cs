@@ -72,7 +72,7 @@ public class QuizControllerTests : IDisposable
                 { 
                     Answers = new List<Answer> 
                     { 
-                        new Answer { IsCorrect = true }, // Справжня правильна відповідь
+                        new Answer { IsCorrect = true },
                         new Answer { IsCorrect = false }
                     } 
                 }
@@ -90,7 +90,7 @@ public class QuizControllerTests : IDisposable
         var answers = returnedQuiz!.Questions.SelectMany(q => q.Answers).ToList();
         
         answers.Count.ShouldBe(2);
-        answers.ShouldAllBe(a => a.IsCorrect == false); // Контролер мав приховати правильну відповідь!
+        answers.ShouldAllBe(a => a.IsCorrect == false);
     }
 
     [Fact]
@@ -148,7 +148,7 @@ public class QuizControllerTests : IDisposable
         var leaderboard = result.Value as List<Attempt>;
         leaderboard.ShouldNotBeNull();
         leaderboard.Count.ShouldBe(3);
-        leaderboard[0].Score.ShouldBe(100); // Найкращий бал має бути першим
+        leaderboard[0].Score.ShouldBe(100);
         leaderboard[1].Score.ShouldBe(75);
         leaderboard[2].Score.ShouldBe(50);
     }

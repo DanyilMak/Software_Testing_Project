@@ -11,11 +11,11 @@ public class QuizServiceTests : IDisposable
 {
     private readonly QuizDbContext _context;
     private readonly IEmailService _emailServiceMock;
-    private readonly QuizService _sut; // System Under Test
+    private readonly QuizService _sut;
 
     public QuizServiceTests()
     {
-        // Arrange (загальний для всіх тестів)
+        // Arrange
         var options = new DbContextOptionsBuilder<QuizDbContext>()
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
@@ -138,12 +138,12 @@ public class QuizServiceTests : IDisposable
     public async Task SubmitAttemptAsync_TimeLimitExceeded_ThrowsInvalidOperationException()
     {
         // Arrange
-        var quiz = new Quiz { Id = 1, TimeLimit = 10 }; // Ліміт 10 хв
+        var quiz = new Quiz { Id = 1, TimeLimit = 10 };
         var attempt = new Attempt 
         { 
             Id = 1, 
             QuizId = 1, 
-            StartedAt = DateTime.UtcNow.AddMinutes(-15), // Почато 15 хв тому
+            StartedAt = DateTime.UtcNow.AddMinutes(-15),
             Quiz = quiz 
         };
         _context.Attempts.Add(attempt);
@@ -178,14 +178,13 @@ public class QuizServiceTests : IDisposable
         await _context.SaveChangesAsync();
 
         // Act
-        var result = await _sut.SubmitAttemptAsync(1, new List<int> { 1 }); // Відправили правильну відповідь
+        var result = await _sut.SubmitAttemptAsync(1, new List<int> { 1 });
 
         // Assert
         result.Score.ShouldBe(100);
         result.IsPassed.ShouldBeTrue();
         result.FinishedAt.ShouldNotBeNull();
         
-        // Перевіряємо, чи викликався мок NSubstitute
         await _emailServiceMock.Received(1).SendResultAsync("proGamer", 100);
     }
 
@@ -220,7 +219,7 @@ public class QuizServiceTests : IDisposable
         _context.Attempts.Add(attempt);
         await _context.SaveChangesAsync();
 
-        // Act - відправляємо неправильну відповідь (Id 4)
+        // Act
         var result = await _sut.SubmitAttemptAsync(2, new List<int> { 4 });
 
         // Assert

@@ -54,7 +54,7 @@ public class QuizEndpointsTests : IClassFixture<QuizApiFactory>
     [Fact]
     public async Task AddQuestion_InvalidData_ReturnsBadRequest()
     {
-        // Arrange: Питання без відповідей (порушує бізнес-правило)
+        // Arrange
         var invalidQuestion = new Question { Type = QuestionType.SingleChoice, Answers = new List<Answer>() };
 
         // Act

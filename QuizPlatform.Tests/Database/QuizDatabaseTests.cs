@@ -25,7 +25,7 @@ public class QuizDatabaseTests : IAsyncLifetime
             .Options;
 
         _context = new QuizDbContext(options);
-        await _context.Database.EnsureCreatedAsync(); // Створюємо схему БД
+        await _context.Database.EnsureCreatedAsync();
     }
 
     public async Task DisposeAsync()
@@ -74,7 +74,7 @@ public class QuizDatabaseTests : IAsyncLifetime
         var aCount = await _context.Answers.CountAsync(a => a.QuestionId == question.Id);
         
         qCount.ShouldBe(0);
-        aCount.ShouldBe(0); // Перевірка каскадного видалення БД
+        aCount.ShouldBe(0);
     }
 
     [Fact]
@@ -102,7 +102,7 @@ public class QuizDatabaseTests : IAsyncLifetime
         { 
             QuizId = quiz.Id, 
             UserName = "TimeUser", 
-            StartedAt = DateTime.UtcNow // Postgres вимагає UTC
+            StartedAt = DateTime.UtcNow
         };
 
         // Act

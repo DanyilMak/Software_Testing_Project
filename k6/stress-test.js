@@ -9,7 +9,7 @@ export const options = {
         { duration: '30s', target: 0 },   // Швидке відновлення
     ],
     thresholds: {
-        http_req_duration: ['p(95)<1000'], // У стрес-тестах припускається більша затримка
+        http_req_duration: ['p(95)<1000'], //припускається більша затримка
     },
 };
 
@@ -24,7 +24,7 @@ export default function () {
     const res = http.post('http://localhost:5284/api/attempts/1/submit', payload, params);
     
     check(res, {
-        // У стрес-тесті ми допускаємо помилки 400 (якщо спроба вже завершена), 
+        // У стрес-тесті допускаємо помилки 400 (якщо спроба завершена), 
         // головне, щоб сервер не впав з 500 помилкою
         'server not crashed (status != 500)': (r) => r.status !== 500,
     });
