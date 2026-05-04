@@ -79,7 +79,7 @@ public class QuizService
             var correctAnswers = question.Answers.Where(a => a.IsCorrect).Select(a => a.Id).ToList();
             var userAnswersForQuestion = selectedAnswerIds.Intersect(question.Answers.Select(a => a.Id)).ToList();
 
-            // Проста логіка: якщо користувач обрав усі правильні відповіді і жодної неправильної
+            //якщо користувач обрав усі правильні відповіді і жодної неправильної
             if (correctAnswers.Count == userAnswersForQuestion.Count && correctAnswers.All(userAnswersForQuestion.Contains))
             {
                 earnedPoints += question.Points;
