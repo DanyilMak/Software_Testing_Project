@@ -32,7 +32,7 @@ public class QuizServiceTests : IDisposable
         var question = new Question
         {
             Type = QuestionType.MultipleChoice,
-            Answers = new List<Answer> { new Answer { IsCorrect = true } } // Лише 1 відповідь
+            Answers = new List<Answer> { new Answer { IsCorrect = true } }
         };
 
         // Act & Assert

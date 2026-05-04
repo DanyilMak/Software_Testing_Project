@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.179" branch-rate="0.1208" version="1.9" timestamp="1777546147" lines-covered="179" lines-valid="1000" branches-covered="29" branches-valid="240">
+<coverage line-rate="0.179" branch-rate="0.1208" version="1.9" timestamp="1777880082" lines-covered="179" lines-valid="1000" branches-covered="29" branches-valid="240">
   <sources>
     <source>D:\Software_Testing_Project\QuizPlatform.Api\</source>
   </sources>
